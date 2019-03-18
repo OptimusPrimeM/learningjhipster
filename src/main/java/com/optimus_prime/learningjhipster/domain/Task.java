@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.time.LocalDate;
 
 @Entity
 @Data
@@ -19,8 +18,41 @@ public class Task {
     @GeneratedValue()
     private Long id;
     private String name;
-    private LocalDate dueDate;
+
+//    @JsonFormat(pattern = "MM/dd/yyyy")
+    private String dueDate;
     private Boolean completed;
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public Boolean getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(Boolean completed) {
+        this.completed = completed;
+    }
 }

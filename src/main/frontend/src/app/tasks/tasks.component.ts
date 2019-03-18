@@ -8,9 +8,5 @@ import { Task } from './models/tasks.model';
 })
 export class TasksComponent  {
   
-  
-
-
-
 
 }
