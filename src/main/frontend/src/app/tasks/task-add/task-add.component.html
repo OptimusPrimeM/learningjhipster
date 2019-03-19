@@ -1,4 +1,9 @@
 <div class="md-form">
-    <input type="email" id="materialLoginFormEmail" class="form-control">
-    <label for="materialLoginFormEmail">Add new Task</label>
+    <input
+     type="email" 
+     id="materialLoginFormEmail" 
+     class="form-control"
+     (keyup.enter)="onTaskAdd($event)">
+    <label for="materialLoginFormEmail"
+    [ngModel] ="addTaskValue">Add new Task</label>
   </div>

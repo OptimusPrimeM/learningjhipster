@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
 import { catchError, map, retry } from 'rxjs/operators';
 import { Task } from '../models/tasks.model';
@@ -7,6 +7,8 @@ import { Task } from '../models/tasks.model';
   providedIn: 'root'
 })
 export class TaskService {
+
+  onTaskAdd = new EventEmitter<Task>();
 
   constructor(private http: Http) { }
 
@@ -29,5 +31,18 @@ export class TaskService {
         map(response => response.json())
       );
   }
+
+  addTask(task: Task) {
+
+    console.log(task);
+
+    return this.http.post('api/tasks/save', task)
+      .pipe(
+        map(response => response.json())
+      );
+  }
+
+
+
 
 }

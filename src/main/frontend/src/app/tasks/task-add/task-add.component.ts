@@ -1,4 +1,7 @@
+import { TaskService } from './../services/task.service';
+import { Task } from './../models/tasks.model';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-task-add',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskAddComponent implements OnInit {
 
-  constructor() { }
+  addTaskValue: string = null;
+
+  constructor(public taskService: TaskService) { }
 
   ngOnInit() {
+  }
+
+  onTaskAdd(event) {
+    const task: Task = new Task(event.target.value, false, '2019/12/21');
+    this.taskService.addTask(task)
+      .subscribe(
+        (newTask: Task) => {
+          this.addTaskValue = ' ';
+          this.taskService.onTaskAdd.emit(newTask);
+        }
+      );
   }
 
 }
